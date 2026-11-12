@@ -175,15 +175,16 @@ docker exec -it namenode bash
 
 ```
 hadoop-docker/
-├── README.md                    # This file
-├── QUICK_START.md              # 3 commands reference
-├── CONTAINER_ACCESS.md         # ⭐ How to access containers and run commands
-├── SETUP_GUIDE.md              # Detailed setup & troubleshooting
-├── FIRST_TIME_SETUP.md         # First-time setup guide
-├── CLEANUP_GUIDE.md            # Cleanup procedures
-├── QUICK_REFERENCE.txt         # Docker & Hadoop commands
+├── README.md                    # This file (main entry point)
 │
-├── experiments/                 # 📂 8 LAB EXPERIMENTS (CORE!)
+├── guides/                      # 📚 ALL DOCUMENTATION
+│   ├── QUICK_START.md          # 3 commands to run the lab
+│   ├── CONTAINER_ACCESS.md     # ⭐ Access containers & run commands
+│   ├── SETUP_GUIDE.md          # Detailed setup & troubleshooting
+│   ├── FIRST_TIME_SETUP.md     # First-time user guide
+│   └── CLEANUP_GUIDE.md        # Cleanup procedures
+│
+├── experiments/                 # 🧪 8 LAB EXPERIMENTS (CORE!)
 │   ├── INDEX.md                # Master index with learning paths
 │   ├── 1_MapReduce_WordCount.md          # Hadoop MapReduce
 │   ├── 2_Hive_SQL_Queries.md             # Apache Hive
@@ -197,8 +198,9 @@ hadoop-docker/
 ├── docker-compose.yml          # Services configuration
 ├── Dockerfile                  # Custom image with Sqoop & Pig
 ├── hadoop-hive.env             # Environment variables
-├── .gitignore                  # Git ignore rules
-└── LICENSE                     # MIT License
+├── QUICK_REFERENCE.txt         # Docker & Hadoop commands
+├── LICENSE                     # MIT License
+└── .gitignore                  # Git ignore rules
 
 workspace/                       # ⚠️ NOT in repo - YOU CREATE THIS
 ├── mapred/                     # Your MapReduce jobs (.java, .jar)
@@ -281,11 +283,15 @@ Each experiment includes:
 
 ## 📚 Documentation
 
+All guides are in the `guides/` folder for better organization:
+
 | File | Purpose |
 |------|---------|
-| **QUICK_START.md** | 3 commands to run the lab |
-| **CONTAINER_ACCESS.md** | ⭐ **START HERE** - Access bash, run commands in containers |
-| **SETUP_GUIDE.md** | Detailed setup and troubleshooting |
+| **guides/QUICK_START.md** | 3 commands to run the lab |
+| **guides/CONTAINER_ACCESS.md** | ⭐ **START HERE** - Access bash, run commands in containers |
+| **guides/SETUP_GUIDE.md** | Detailed setup and troubleshooting |
+| **guides/FIRST_TIME_SETUP.md** | First-time user setup steps |
+| **guides/CLEANUP_GUIDE.md** | Remove containers and clean up system |
 | **experiments/INDEX.md** | 📂 **EXPERIMENTS** - 8 complete lab experiments (start here!) |
 | **experiments/1_MapReduce_WordCount.md** | Experiment 1 - Distributed computing |
 | **experiments/2_Hive_SQL_Queries.md** | Experiment 2 - SQL queries |
@@ -296,7 +302,6 @@ Each experiment includes:
 | **experiments/7_Pig_Joins.md** | Experiment 7 - Pig joins |
 | **experiments/8_Data_Aggregation.md** | Experiment 8 - Aggregation & statistics |
 | **QUICK_REFERENCE.txt** | Docker & Hadoop commands cheatsheet |
-| **CLEANUP_GUIDE.md** | Remove containers and clean up system |
 
 ---
 
@@ -314,7 +319,7 @@ docker exec -it namenode bash
 # cd /tmp && javac MapReduce.java
 ```
 
-**⚠️ IMPORTANT**: Most Hadoop/HDFS commands must run **inside** the container using `docker exec -it namenode bash`. See **CONTAINER_ACCESS.md** for complete guide.
+**⚠️ IMPORTANT**: Most Hadoop/HDFS commands must run **inside** the container using `docker exec -it namenode bash`. See **guides/CONTAINER_ACCESS.md** for complete guide.
 
 ### Upload File to HDFS
 ```bash
@@ -355,7 +360,7 @@ docker-compose down -v   # Stop and delete volumes
 
 ## 🧹 Cleanup & Remove
 
-When you're done with the lab, see **CLEANUP_GUIDE.md** for detailed instructions.
+When you're done with the lab, see **guides/CLEANUP_GUIDE.md** for detailed instructions.
 
 ### Quick Cleanup Options
 
@@ -448,7 +453,7 @@ netstat -ano | findstr :50070
 # Change "50070:50070" to "50071:50070"
 ```
 
-See **SETUP_GUIDE.md** for more troubleshooting.
+See **guides/SETUP_GUIDE.md** for more troubleshooting.
 
 ---
 
@@ -484,7 +489,7 @@ docker-compose down -v   # ⚠️ Deletes volumes!
 Start with the **experiments** folder - follow the learning paths in `experiments/INDEX.md`:
 
 ### Beginner (1-2 hours)
-1. Run QUICK_START.md
+1. Run guides/QUICK_START.md
 2. Access NameNode UI (http://localhost:50070)
 3. Do **Experiment 1**: MapReduce WordCount
 4. Do **Experiment 2**: Hive SQL Queries

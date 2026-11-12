@@ -1,0 +1,270 @@
+================================================================================
+HADOOP-HIVE-SQOOP-PIG DOCKER LAB - QUICK REFERENCE CARD
+================================================================================
+
+ESSENTIAL FILES TO PRESERVE:
+  ✅ docker-compose.yml      (Define all services)
+  ✅ Dockerfile              (Build custom image)
+  ✅ hadoop-hive.env         (Configuration parameters)
+  ✅ README.md               (Full documentation)
+  ✅ SETUP_GUIDE.md          (Step-by-step guide)
+  ✅ REQUIREMENTS.md         (What to download)
+  ✅ BACKUP_INFO.md          (Archive strategy)
+
+BINARIES (AUTO-DOWNLOADED):
+  ✅ Sqoop     - Downloads automatically during docker build
+  ✅ Pig       - Downloads automatically during docker build
+  ✅ MySQL     - Downloads automatically during docker build
+  NO manual downloads needed!
+
+================================================================================
+QUICK START (WHEN RECREATING):
+================================================================================
+
+1. Prepare workspace with binaries:
+   mkdir workspace
+   # Place 3 files above in workspace/
+
+2. Build the custom image:
+   docker build -t local/hadoop-namenode-sqoop:2.7.4 .
+
+3. Start all services:
+   docker-compose up -d
+
+4. Wait 1-2 minutes, then verify:
+   docker-compose ps
+
+5. Access services:
+   NameNode UI:        http://localhost:50070
+   YARN UI:            http://localhost:8088
+   History Server:     http://localhost:8188
+   HiveServer2:        localhost:10000
+   MySQL:              localhost:3307 (root/root)
+
+================================================================================
+COMMON COMMANDS:
+================================================================================
+
+MANAGEMENT:
+  docker-compose up -d          # Start all containers
+  docker-compose down           # Stop containers (keep data)
+  docker-compose down -v        # Stop and remove volumes
+  docker-compose ps             # Check status
+  docker-compose logs -f        # View live logs
+
+FILE OPERATIONS:
+  docker cp file.txt namenode:/tmp/           # Copy TO container
+  docker exec namenode hadoop fs -put /tmp/file.txt /   # Put in HDFS
+  docker exec namenode hadoop fs -ls /        # List HDFS
+  docker exec namenode hadoop fs -cat /file   # Read HDFS file
+
+MAPREDUCE:
+  docker exec namenode hadoop jar /tmp/job.jar jobclass /input /output
+  
+HIVE:
+  docker exec -it hive-server hive             # Enter Hive shell (CORRECT WAY)
+  
+PIG:
+  docker exec -it namenode pig                 # Enter Pig shell
+  docker exec namenode pig -f /tmp/script.pig  # Run Pig script
+  
+SQOOP IMPORT:
+  docker exec namenode sqoop import \
+    --connect jdbc:mysql://mysql-db:3306/testdb \
+    --username root --password root \
+    --table tablename -m 1 \
+    --target-dir /sqoop_import/tablename
+
+MYSQL:
+  docker exec mysql-db mysql -u root -proot -e "SHOW DATABASES;"
+
+================================================================================
+BACKUP STRATEGY:
+================================================================================
+
+Immediate (End of Lab):
+  1. git init && git add . && git push to GitHub
+  2. Backup workspace/ folder
+  3. Note where binaries are downloaded from
+
+Long-term (for next year):
+  1. GitHub repository (configuration)
+  2. Cloud backup of binaries (or re-download)
+  3. Archive workspace-backup.zip in cloud
+
+Recovery:
+  1. Clone from GitHub
+  2. Download binaries to workspace/
+  3. docker build ... && docker-compose up -d
+  4. Restore workspace/ from backup if needed
+
+================================================================================
+VOLUMES & DATA PERSISTENCE:
+================================================================================
+
+Named Volumes (Docker managed):
+  namenode              → /hadoop/dfs/name
+  datanode              → /hadoop/dfs/data
+  hadoop_historyserver  → /hadoop/yarn/timeline
+
+Local Mount:
+  ./workspace           → /workspace (in all containers)
+
+Data Persists After:
+  docker-compose stop   ✅ (volume remains)
+  docker-compose down   ✅ (volume remains)
+  docker-compose down -v ❌ (volume deleted)
+
+Recovery:
+  Data in named volumes is permanent until -v flag used
+  Always backup workspace/ separately
+
+================================================================================
+TROUBLESHOOTING:
+================================================================================
+
+Containers won't start?
+  docker-compose logs [service-name]
+
+Out of memory?
+  Increase Docker resources in Docker Desktop settings
+  OR edit hadoop-hive.env: YARN_CONF_yarn_nodemanager_resource_memory___mb
+
+Port conflicts?
+  Use: netstat -ano | findstr :PORT
+  Change ports in docker-compose.yml
+
+Services taking too long?
+  Normal startup: 1-2 minutes
+  Check: docker-compose ps
+  View logs: docker-compose logs -f
+
+Can't connect to MySQL?
+  docker exec mysql-db mysql -u root -proot -e "SELECT 1;"
+
+Hive metastore issues?
+  Restart: docker-compose restart hive-metastore
+  Wait a moment, then retry
+
+================================================================================
+SYSTEM REQUIREMENTS:
+================================================================================
+
+Minimum:
+  ✅ 4 GB RAM available
+  ✅ 10 GB free disk space
+  ✅ Docker v20.10+
+  ✅ Docker Compose v1.29+
+
+Images Size:
+  Hadoop ecosystem images: ~7.5 GB (first download)
+  Binaries to download: ~354 MB
+  Running containers: ~2-3 GB
+
+================================================================================
+IMPORTANT NOTES:
+================================================================================
+
+• This setup uses Hadoop 2.7.4 (stable, older version)
+• Hive 2.3.2 with PostgreSQL backend for metadata
+• Pig 0.17.0 for data processing
+• Sqoop 1.4.7 for SQL data transfer
+• MySQL 5.7 for sample database
+
+• All services automatically detect dependencies
+• Service startup order: namenode → datanode → others → hive-server
+
+• Workspace/ is your work directory - changes persist
+• Back this up separately for your job outputs
+
+================================================================================
+FILE LOCATIONS IN CONTAINERS:
+================================================================================
+
+Hadoop:
+  /opt/hadoop-2.7.4/
+  /hadoop/dfs/name        (NameNode data)
+  /hadoop/dfs/data        (DataNode data)
+
+Hive:
+  /opt/hive/
+
+Pig:
+  /usr/local/pig/
+
+Sqoop:
+  /usr/local/sqoop/
+
+Workspace (mounted):
+  /workspace/
+
+Logs:
+  /var/log/
+
+================================================================================
+WEB INTERFACE PORTS:
+================================================================================
+
+NameNode UI           http://localhost:50070
+ResourceManager UI    http://localhost:8088
+NodeManager UI        http://localhost:8042
+History Server UI     http://localhost:8188
+HiveServer2 Thrift    localhost:10000
+MySQL                 localhost:3307
+Hive Metastore        localhost:9083
+
+================================================================================
+DEFAULT CREDENTIALS:
+================================================================================
+
+MySQL:
+  Username: root
+  Password: root
+  Database: testdb
+  Port: 3307 (external), 3306 (internal)
+
+Hadoop:
+  No auth required (for lab environment)
+
+Hive:
+  MetaStore backend: PostgreSQL (automated)
+
+================================================================================
+FOR FUTURE REFERENCE:
+================================================================================
+
+To recreate this entire setup:
+  1. Keep all files in hadoop-docker/ directory
+  2. Download binaries to workspace/ (see REQUIREMENTS.md)
+  3. Run: docker build -t local/hadoop-namenode-sqoop:2.7.4 .
+  4. Run: docker-compose up -d
+  5. Done! Lab ready in 2-3 minutes
+
+To backup:
+  1. Commit to GitHub: git push
+  2. Backup workspace/: zip or cloud
+  3. Save binaries: local or note download URLs
+
+To restore:
+  1. Clone from GitHub
+  2. Restore workspace/ from backup
+  3. Download binaries to workspace/
+  4. Run build & compose commands above
+
+================================================================================
+USEFUL REFERENCES:
+================================================================================
+
+Hadoop:      https://hadoop.apache.org/
+Hive:        https://cwiki.apache.org/confluence/display/Hive
+Pig:         https://pig.apache.org/
+Sqoop:       https://sqoop.apache.org/
+Docker:      https://docker.com/
+Compose:     https://docs.docker.com/compose/
+
+BDE2020 Images: https://github.com/big-data-europe/docker-hadoop
+
+================================================================================
+
+Last Updated: 2026
+Status: Lab Complete - Ready for Archive

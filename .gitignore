@@ -1,0 +1,18 @@
+# Ignore workspace directory entirely (users create their own)
+workspace/
+
+# Docker and build artifacts
+docker-compose.override.yml
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# System
+.env.local
+.env.*.local

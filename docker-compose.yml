@@ -1,0 +1,97 @@
+services:
+  namenode:
+    image: local/hadoop-namenode-sqoop:2.7.4
+    container_name: namenode
+    volumes:
+      - namenode:/hadoop/dfs/name
+      - ./workspace:/workspace
+    environment:
+      CLUSTER_NAME: test
+    env_file:
+      - ./hadoop-hive.env
+    ports:
+      - "50070:50070"
+      - "8020:8020"
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    container_name: datanode
+    volumes:
+      - datanode:/hadoop/dfs/data
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070"
+    ports:
+      - "50075:50075"
+
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop2.7.4-java8
+    container_name: resourcemanager
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
+    ports:
+      - "8088:8088"
+
+  nodemanager:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop2.7.4-java8
+    container_name: nodemanager
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
+    ports:
+      - "8042:8042"
+
+  historyserver:
+    image: bde2020/hadoop-historyserver:2.0.0-hadoop2.7.4-java8
+    container_name: historyserver
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
+    ports:
+      - "8188:8188"
+
+  hive-metastore-postgresql:
+    image: bde2020/hive-metastore-postgresql:2.3.0
+    container_name: hive-metastore-postgresql
+
+  hive-metastore:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-metastore
+    env_file:
+      - ./hadoop-hive.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432"
+    ports:
+      - "9083:9083"
+
+  hive-server:
+    image: bde2020/hive:2.3.2-postgresql-metastore
+    container_name: hive-server
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      SERVICE_PRECONDITION: "hive-metastore:9083"
+    ports:
+      - "10000:10000"
+
+  mysql-db:
+    image: mysql:5.7
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+    ports:
+      - "3307:3306"
+
+volumes:
+  namenode:
+  datanode:
+  hadoop_historyserver:

@@ -6,6 +6,19 @@ A complete, production-ready big data analytics lab using Docker containers. Aut
 
 ---
 
+## 🎓 **EDUCATIONAL PURPOSE**
+
+### **This lab is designed for:**
+- ✅ **Learning** - Understand how Hadoop, HDFS, YARN, Hive, and Pig work
+- ✅ **Experimentation** - Try big data tools in a safe, isolated environment
+- ✅ **Skill Development** - Build competence with distributed computing frameworks
+- ✅ **Academic Projects** - Perfect for college coursework and assignments
+- ✅ **Team Training** - Quickly onboard teams with hands-on experience
+
+**No prior setup knowledge required. Everything is automated and ready to use!**
+
+---
+
 ## ⚡ Quick Start (3 Steps)
 
 ### Step 1: Clone & Setup
@@ -40,6 +53,18 @@ docker-compose ps
 ---
 
 ## 🎯 Access Your Lab
+
+### 🖥️ **MOST IMPORTANT - Access NameNode Terminal/Bash**
+
+```bash
+docker exec -it namenode bash
+```
+
+**This is where you run Hadoop/HDFS commands, compile Java, and manage your lab!**
+
+---
+
+### 🌐 Web Interfaces & Tools
 
 | Service | URL | Port | Command |
 |---------|-----|------|---------|

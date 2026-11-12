@@ -140,7 +140,7 @@ This keeps your code and data separate, clean, and portable.
 
 ## 🧪 Lab Experiments
 
-8 complete experiments included (see `LAB_EXPERIMENTS.md`):
+8 complete experiments included (see `experiments/` folder):
 
 1. **MapReduce WordCount** - Distributed word counting
 2. **Hive SQL Queries** - SQL on distributed data
@@ -153,9 +153,22 @@ This keeps your code and data separate, clean, and portable.
 
 Each experiment includes:
 - ✅ Step-by-step instructions
-- ✅ Sample data
+- ✅ Sample data and commands
 - ✅ Expected output
-- ✅ Docker commands
+- ✅ Tool documentation and learning points
+- ✅ Troubleshooting guide
+
+**📂 Start with**: `experiments/INDEX.md` for complete overview and learning paths
+
+**📂 Individual files**: Each experiment has its own markdown file:
+- `experiments/1_MapReduce_WordCount.md`
+- `experiments/2_Hive_SQL_Queries.md`
+- `experiments/3_Pig_Data_Processing.md`
+- `experiments/4_Sqoop_Import.md`
+- `experiments/5_Hive_External_Tables.md`
+- `experiments/6_Join_Operations.md`
+- `experiments/7_Pig_Joins.md`
+- `experiments/8_Data_Aggregation.md`
 
 ---
 
@@ -166,7 +179,15 @@ Each experiment includes:
 | **QUICK_START.md** | 3 commands to run the lab |
 | **CONTAINER_ACCESS.md** | ⭐ **START HERE** - Access bash, run commands in containers |
 | **SETUP_GUIDE.md** | Detailed setup and troubleshooting |
-| **LAB_EXPERIMENTS.md** | 8 complete experiments with examples |
+| **experiments/INDEX.md** | 📂 **EXPERIMENTS** - 8 complete lab experiments (start here!) |
+| **experiments/1_MapReduce_WordCount.md** | Experiment 1 - Distributed computing |
+| **experiments/2_Hive_SQL_Queries.md** | Experiment 2 - SQL queries |
+| **experiments/3_Pig_Data_Processing.md** | Experiment 3 - Data transformation |
+| **experiments/4_Sqoop_Import.md** | Experiment 4 - Database transfer |
+| **experiments/5_Hive_External_Tables.md** | Experiment 5 - External tables |
+| **experiments/6_Join_Operations.md** | Experiment 6 - Table joins |
+| **experiments/7_Pig_Joins.md** | Experiment 7 - Pig joins |
+| **experiments/8_Data_Aggregation.md** | Experiment 8 - Aggregation & statistics |
 | **QUICK_REFERENCE.txt** | Docker & Hadoop commands cheatsheet |
 | **CLEANUP_GUIDE.md** | Remove containers and clean up system |
 
@@ -353,23 +374,27 @@ docker-compose down -v   # ⚠️ Deletes volumes!
 
 ## 🎓 Learning Path
 
-### Beginner
+Start with the **experiments** folder - follow the learning paths in `experiments/INDEX.md`:
+
+### Beginner (1-2 hours)
 1. Run QUICK_START.md
-2. Access NameNode UI
-3. Try Experiment 1 (MapReduce)
-4. Try Experiment 2 (Hive)
+2. Access NameNode UI (http://localhost:50070)
+3. Do **Experiment 1**: MapReduce WordCount
+4. Do **Experiment 2**: Hive SQL Queries
 
-### Intermediate
-1. Write custom MapReduce job
-2. Create Hive tables and queries
-3. Try Pig transformations
-4. Import MySQL data with Sqoop
+### Intermediate (2-3 hours)
+5. Do **Experiment 3**: Pig Data Processing
+6. Do **Experiment 5**: Hive External Tables
+7. Do **Experiment 6**: Join Operations
 
-### Advanced
-1. Complex MapReduce programs
-2. Hive joins and aggregations
-3. Pig ETL pipelines
-4. End-to-end data workflows
+### Advanced (1-2 hours)
+8. Do **Experiment 4**: Sqoop Import/Export
+9. Do **Experiment 7**: Pig Joins
+10. Do **Experiment 8**: Data Aggregation
+
+**Total**: ~3-4 hours to complete all 8 experiments
+
+**📂 See**: `experiments/INDEX.md` for detailed learning paths and descriptions
 
 ---
 

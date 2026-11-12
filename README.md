@@ -200,6 +200,7 @@ hadoop-docker/
 ├── Dockerfile                  # Custom image with Sqoop & Pig
 ├── hadoop-hive.env             # Environment variables
 ├── QUICK_REFERENCE.txt         # Docker & Hadoop commands
+├── SECURITY_AND_RISKS.md       # 🔒 Security, pros, cons, and risks
 ├── LICENSE                     # MIT License
 └── .gitignore                  # Git ignore rules
 
@@ -295,6 +296,7 @@ All guides are in the `guides/` folder for better organization:
 | **guides/SETUP_GUIDE.md** | Detailed setup and troubleshooting |
 | **guides/FIRST_TIME_SETUP.md** | First-time user setup steps |
 | **guides/CLEANUP_GUIDE.md** | Remove containers and clean up system |
+| **SECURITY_AND_RISKS.md** | 🔒 Pros, cons, risks, and security considerations |
 | **experiments/INDEX.md** | 📂 **EXPERIMENTS** - 9 complete lab experiments (start here!) |
 | **experiments/0_HDFS_Commands.md** | Experiment 0 - HDFS basics (START HERE!) |
 | **experiments/1_MapReduce_WordCount.md** | Experiment 1 - Distributed computing |
@@ -306,6 +308,23 @@ All guides are in the `guides/` folder for better organization:
 | **experiments/7_Pig_Joins.md** | Experiment 7 - Pig joins |
 | **experiments/8_Data_Aggregation.md** | Experiment 8 - Aggregation & statistics |
 | **QUICK_REFERENCE.txt** | Docker & Hadoop commands cheatsheet |
+
+---
+
+## 🔒 Security & Risks
+
+**⚠️ IMPORTANT**: This setup is designed for **learning and education only**.
+
+- ✅ **Safe For**: Learning, college labs, development, POCs
+- ❌ **Not For**: Production data, sensitive information, internet exposure
+
+**📂 See**: `SECURITY_AND_RISKS.md` for complete analysis of:
+- ✅ Pros of this setup
+- ❌ Cons and limitations
+- 🔴 Risks and when NOT to use
+- 🛡️ Mitigation strategies
+
+**TL;DR**: Perfect for learning Hadoop. Never use with production data or expose to the internet. 🎓
 
 ---
 

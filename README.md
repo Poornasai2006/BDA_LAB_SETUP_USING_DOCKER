@@ -184,12 +184,13 @@ hadoop-docker/
 │   ├── FIRST_TIME_SETUP.md     # First-time user guide
 │   └── CLEANUP_GUIDE.md        # Cleanup procedures
 │
-├── experiments/                 # 🧪 8 LAB EXPERIMENTS (CORE!)
+├── experiments/                 # 🧪 9 LAB EXPERIMENTS (CORE!)
 │   ├── INDEX.md                # Master index with learning paths
+│   ├── 0_HDFS_Commands.md               # HDFS Basics (Start Here!)
 │   ├── 1_MapReduce_WordCount.md          # Hadoop MapReduce
 │   ├── 2_Hive_SQL_Queries.md             # Apache Hive
 │   ├── 3_Pig_Data_Processing.md          # Apache Pig
-│   ├── 4_Sqoop_Import.md                 # Apache Sqoop
+│   ├── 4_Sqoop.md                       # Apache Sqoop
 │   ├── 5_Hive_External_Tables.md         # Apache Hive
 │   ├── 6_Join_Operations.md              # Apache Hive
 │   ├── 7_Pig_Joins.md                    # Apache Pig
@@ -249,8 +250,9 @@ This keeps your code and data separate, clean, and portable.
 
 ## 🧪 Lab Experiments
 
-8 complete experiments included (see `experiments/` folder):
+9 complete experiments included (see `experiments/` folder):
 
+0. **HDFS Commands** - Basics of Hadoop distributed file system (START HERE!)
 1. **MapReduce WordCount** - Distributed word counting
 2. **Hive SQL Queries** - SQL on distributed data
 3. **Pig Data Processing** - ETL transformations
@@ -270,10 +272,11 @@ Each experiment includes:
 **📂 Start with**: `experiments/INDEX.md` for complete overview and learning paths
 
 **📂 Individual files**: Each experiment has its own markdown file:
+- `experiments/0_HDFS_Commands.md`
 - `experiments/1_MapReduce_WordCount.md`
 - `experiments/2_Hive_SQL_Queries.md`
 - `experiments/3_Pig_Data_Processing.md`
-- `experiments/4_Sqoop_Import.md`
+- `experiments/4_Sqoop.md`
 - `experiments/5_Hive_External_Tables.md`
 - `experiments/6_Join_Operations.md`
 - `experiments/7_Pig_Joins.md`
@@ -292,11 +295,12 @@ All guides are in the `guides/` folder for better organization:
 | **guides/SETUP_GUIDE.md** | Detailed setup and troubleshooting |
 | **guides/FIRST_TIME_SETUP.md** | First-time user setup steps |
 | **guides/CLEANUP_GUIDE.md** | Remove containers and clean up system |
-| **experiments/INDEX.md** | 📂 **EXPERIMENTS** - 8 complete lab experiments (start here!) |
+| **experiments/INDEX.md** | 📂 **EXPERIMENTS** - 9 complete lab experiments (start here!) |
+| **experiments/0_HDFS_Commands.md** | Experiment 0 - HDFS basics (START HERE!) |
 | **experiments/1_MapReduce_WordCount.md** | Experiment 1 - Distributed computing |
 | **experiments/2_Hive_SQL_Queries.md** | Experiment 2 - SQL queries |
 | **experiments/3_Pig_Data_Processing.md** | Experiment 3 - Data transformation |
-| **experiments/4_Sqoop_Import.md** | Experiment 4 - Database transfer |
+| **experiments/4_Sqoop.md** | Experiment 4 - Database transfer |
 | **experiments/5_Hive_External_Tables.md** | Experiment 5 - External tables |
 | **experiments/6_Join_Operations.md** | Experiment 6 - Table joins |
 | **experiments/7_Pig_Joins.md** | Experiment 7 - Pig joins |
@@ -488,6 +492,9 @@ docker-compose down -v   # ⚠️ Deletes volumes!
 
 Start with the **experiments** folder - follow the learning paths in `experiments/INDEX.md`:
 
+### Foundational (30 minutes)
+0. Read **Experiment 0**: HDFS Commands (basics)
+
 ### Beginner (1-2 hours)
 1. Run guides/QUICK_START.md
 2. Access NameNode UI (http://localhost:50070)
@@ -504,7 +511,7 @@ Start with the **experiments** folder - follow the learning paths in `experiment
 9. Do **Experiment 7**: Pig Joins
 10. Do **Experiment 8**: Data Aggregation
 
-**Total**: ~3-4 hours to complete all 8 experiments
+**Total**: ~4-5 hours to complete all 9 experiments
 
 **📂 See**: `experiments/INDEX.md` for detailed learning paths and descriptions
 
@@ -605,10 +612,11 @@ Start your learning journey:
 ```
 experiments/
 ├── INDEX.md                    ← START HERE! Master index with learning paths
+├── 0_HDFS_Commands.md          ← Tool: Hadoop HDFS (Foundational - START HERE!)
 ├── 1_MapReduce_WordCount.md    ← Tool: Hadoop MapReduce (Beginner)
 ├── 2_Hive_SQL_Queries.md       ← Tool: Apache Hive (Beginner)
 ├── 3_Pig_Data_Processing.md    ← Tool: Apache Pig (Intermediate)
-├── 4_Sqoop_Import.md           ← Tool: Apache Sqoop (Intermediate)
+├── 4_Sqoop.md                  ← Tool: Apache Sqoop (Intermediate)
 ├── 5_Hive_External_Tables.md   ← Tool: Apache Hive (Intermediate)
 ├── 6_Join_Operations.md        ← Tool: Apache Hive (Intermediate)
 ├── 7_Pig_Joins.md              ← Tool: Apache Pig (Intermediate)

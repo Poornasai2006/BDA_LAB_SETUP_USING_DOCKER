@@ -24,7 +24,7 @@ A complete, production-ready big data analytics lab using Docker containers. Aut
 ### Step 1: Clone & Setup
 ```bash
 # Clone repository
-git clone <your-repo-url>
+git clone  https://github.com/Poornasai2006/BDA_LAB_SETUP_USING_DOCKER.git
 cd hadoop-docker
 
 # Create workspace directory for your data and programs

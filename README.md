@@ -139,6 +139,7 @@ Each experiment includes:
 | File | Purpose |
 |------|---------|
 | **QUICK_START.md** | 3 commands to run the lab |
+| **CONTAINER_ACCESS.md** | ⭐ **START HERE** - Access bash, run commands in containers |
 | **SETUP_GUIDE.md** | Detailed setup and troubleshooting |
 | **LAB_EXPERIMENTS.md** | 8 complete experiments with examples |
 | **QUICK_REFERENCE.txt** | Docker & Hadoop commands cheatsheet |
@@ -147,6 +148,20 @@ Each experiment includes:
 ---
 
 ## 🔧 Common Tasks
+
+### ⭐ Access Hadoop Terminal
+
+```bash
+# Enter NameNode bash (do this to run Hadoop/HDFS commands)
+docker exec -it namenode bash
+
+# Now you can run commands like:
+# hadoop fs -ls /
+# hadoop jar job.jar input output
+# cd /tmp && javac MapReduce.java
+```
+
+**⚠️ IMPORTANT**: Most Hadoop/HDFS commands must run **inside** the container using `docker exec -it namenode bash`. See **CONTAINER_ACCESS.md** for complete guide.
 
 ### Upload File to HDFS
 ```bash

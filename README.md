@@ -83,9 +83,22 @@ docker exec -it namenode bash
 hadoop-docker/
 ├── README.md                    # This file
 ├── QUICK_START.md              # 3 commands reference
+├── CONTAINER_ACCESS.md         # ⭐ How to access containers and run commands
 ├── SETUP_GUIDE.md              # Detailed setup & troubleshooting
-├── LAB_EXPERIMENTS.md          # 8 ready-to-run experiments
+├── FIRST_TIME_SETUP.md         # First-time setup guide
+├── CLEANUP_GUIDE.md            # Cleanup procedures
 ├── QUICK_REFERENCE.txt         # Docker & Hadoop commands
+│
+├── experiments/                 # 📂 8 LAB EXPERIMENTS (CORE!)
+│   ├── INDEX.md                # Master index with learning paths
+│   ├── 1_MapReduce_WordCount.md          # Hadoop MapReduce
+│   ├── 2_Hive_SQL_Queries.md             # Apache Hive
+│   ├── 3_Pig_Data_Processing.md          # Apache Pig
+│   ├── 4_Sqoop_Import.md                 # Apache Sqoop
+│   ├── 5_Hive_External_Tables.md         # Apache Hive
+│   ├── 6_Join_Operations.md              # Apache Hive
+│   ├── 7_Pig_Joins.md                    # Apache Pig
+│   └── 8_Data_Aggregation.md             # Apache Hive
 │
 ├── docker-compose.yml          # Services configuration
 ├── Dockerfile                  # Custom image with Sqoop & Pig
@@ -419,9 +432,30 @@ MIT License - See LICENSE file
 1. **Read**: QUICK_START.md (2 minutes)
 2. **Build**: `docker build -t local/hadoop-namenode-sqoop:2.7.4 .` (15 minutes)
 3. **Run**: `docker-compose up -d` (3 minutes)
-4. **Explore**: LAB_EXPERIMENTS.md
+4. **Explore**: `experiments/INDEX.md` for all 8 experiments
 
 **Your big data lab is ready!** 🚀
+
+---
+
+## 📂 Experiments Folder Structure
+
+Start your learning journey:
+
+```
+experiments/
+├── INDEX.md                    ← START HERE! Master index with learning paths
+├── 1_MapReduce_WordCount.md    ← Tool: Hadoop MapReduce (Beginner)
+├── 2_Hive_SQL_Queries.md       ← Tool: Apache Hive (Beginner)
+├── 3_Pig_Data_Processing.md    ← Tool: Apache Pig (Intermediate)
+├── 4_Sqoop_Import.md           ← Tool: Apache Sqoop (Intermediate)
+├── 5_Hive_External_Tables.md   ← Tool: Apache Hive (Intermediate)
+├── 6_Join_Operations.md        ← Tool: Apache Hive (Intermediate)
+├── 7_Pig_Joins.md              ← Tool: Apache Pig (Intermediate)
+└── 8_Data_Aggregation.md       ← Tool: Apache Hive (Intermediate)
+```
+
+Each file shows which tool it uses and what you'll learn!
 
 ---
 

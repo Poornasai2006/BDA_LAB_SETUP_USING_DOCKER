@@ -108,11 +108,11 @@ docker-compose down -v
 
 ## 📚 For More Details
 
+- **⭐ How to Run Commands**: See `CONTAINER_ACCESS.md` (essential!)
 - **Full Setup Guide**: See `SETUP_GUIDE.md`
+- **Lab Experiments**: See `LAB_EXPERIMENTS.md`
 - **Troubleshooting**: See `SETUP_GUIDE.md` → Troubleshooting section
 - **Commands Cheatsheet**: See `QUICK_REFERENCE.txt`
-- **What Changed**: See `DOCKER_IMPROVEMENTS.md`
-- **How to Backup**: See `BACKUP_INFO.md`
 
 ---
 

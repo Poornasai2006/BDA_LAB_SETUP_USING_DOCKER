@@ -53,6 +53,8 @@ docker-compose ps
 
 ### Command Line Tools
 
+**⭐ Important**: For complete instructions on running commands inside containers, see **CONTAINER_ACCESS.md**
+
 ```bash
 # Hive (SQL queries)
 docker exec -it hive-server hive

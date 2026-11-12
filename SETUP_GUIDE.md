@@ -93,6 +93,8 @@ docker exec mysql-db mysql -u root -proot -e "SHOW DATABASES;"
 
 ## Common Operations
 
+**⭐ Important**: For detailed instructions on running Hadoop/HDFS commands inside containers, see **CONTAINER_ACCESS.md**
+
 ### Upload a file to HDFS
 ```bash
 # Copy file to container

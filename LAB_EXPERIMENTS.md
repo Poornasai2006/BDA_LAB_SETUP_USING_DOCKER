@@ -2,6 +2,8 @@
 
 Complete guide for running all lab experiments using Docker containers.
 
+**⭐ Reference**: For detailed Docker command syntax and container access instructions, see **CONTAINER_ACCESS.md**
+
 ---
 
 ## 🚀 Quick Start - All Commands Use Docker

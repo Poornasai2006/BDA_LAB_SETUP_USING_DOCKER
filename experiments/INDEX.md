@@ -8,6 +8,7 @@ Complete guide to all 8 experiments for learning Hadoop, Hive, Pig, and Sqoop.
 
 | # | Experiment | Tool | Difficulty | Time | Key Concepts |
 |---|-----------|------|-----------|------|--------------|
+| **0** | [HDFS Commands](#0-hdfs-commands) | Hadoop HDFS | Beginner | 10-15 min | HDFS basics, file operations |
 | 1 | [MapReduce WordCount](#1-mapreduce-wordcount) | Hadoop MapReduce | Beginner | 10-15 min | Distributed computing, Map-Reduce pattern |
 | 2 | [Hive SQL Queries](#2-hive-sql-queries) | Apache Hive | Beginner | 10-15 min | SQL queries, table creation, aggregation |
 | 3 | [Pig Data Processing](#3-pig-data-processing) | Apache Pig | Intermediate | 15-20 min | ETL, data transformation, Pig Latin |
@@ -17,13 +18,14 @@ Complete guide to all 8 experiments for learning Hadoop, Hive, Pig, and Sqoop.
 | 7 | [Pig Joins](#7-pig-joins) | Apache Pig | Intermediate | 20-25 min | Complex joins, data correlation |
 | 8 | [Data Aggregation](#8-data-aggregation) | Apache Hive | Intermediate | 15-20 min | GROUP BY, aggregate functions, statistics |
 
-**Total Time**: ~3-4 hours | **Total Difficulty**: Beginner → Intermediate
+**Total Time**: ~3.5-4.5 hours | **Total Difficulty**: Beginner → Intermediate
 
 ---
 
 ## 🎯 Quick Start by Learning Path
 
 ### 👶 Beginner Path (Start Here!)
+0. **Experiment 0**: HDFS Commands - **START HERE! Foundation for all experiments**
 1. **Experiment 1**: MapReduce WordCount - Understand distributed computing basics
 2. **Experiment 2**: Hive SQL Queries - Learn SQL on Hadoop
 
@@ -40,6 +42,37 @@ Complete guide to all 8 experiments for learning Hadoop, Hive, Pig, and Sqoop.
 ---
 
 ## 📖 Detailed Experiment Descriptions
+
+### 0. HDFS Commands
+
+**🛠️ Tool**: Hadoop HDFS  
+**📚 What You'll Learn**:
+- HDFS file system basics
+- Listing, uploading, downloading files
+- Creating directories and managing files
+- HDFS permissions and health checks
+
+**🎯 Objective**: Master essential HDFS commands (Foundation for all experiments!)
+
+**📂 File**: `0_HDFS_Commands.md`
+
+**Key Commands**:
+```bash
+hadoop fs -ls /                    # List files
+hadoop fs -put file.txt /          # Upload file
+hadoop fs -get /file.txt file.txt  # Download file
+hadoop fs -cat /file.txt           # View content
+hadoop fs -mkdir /directory        # Create directory
+hadoop fs -rm /file.txt            # Delete file
+```
+
+**⚠️ WHY THIS IS FIRST**:
+- All other experiments depend on HDFS operations
+- Learn to upload/download/manage files FIRST
+- No point doing MapReduce without knowing HDFS
+- Fastest way to get productive with Hadoop
+
+---
 
 ### 1. MapReduce WordCount
 
@@ -355,6 +388,18 @@ JobHistory:  http://localhost:8188
 5. **Take notes** on what you learn
 6. **Experiment** - modify data and scripts to explore more
 7. **Do them in order** - each builds on previous knowledge
+
+---
+
+## 📞 For Additional Help
+
+All guides are organized in the `guides/` folder:
+
+- **guides/QUICK_START.md** - Get running in 3 commands
+- **guides/SETUP_GUIDE.md** - Detailed setup & troubleshooting
+- **guides/CONTAINER_ACCESS.md** - How to access containers
+- **guides/FIRST_TIME_SETUP.md** - First-time user guide
+- **guides/CLEANUP_GUIDE.md** - Cleanup procedures
 
 ---
 
